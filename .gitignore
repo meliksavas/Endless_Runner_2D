@@ -44,6 +44,10 @@ ExportedObj/
 *.aab
 *.unitypackage
 
+#Visual Studio
+.vs/
+
+
 # Visual Studio Code
 .vscode/
 
@@ -76,3 +80,5 @@ PlasticSCM/
 
 # VS Code workspace
 *.code-workspace
+    
+

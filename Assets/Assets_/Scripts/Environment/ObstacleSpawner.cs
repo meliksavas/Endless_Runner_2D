@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject obstaclePrefab;
+    
     [SerializeField]
     private float spawnRate = 2f;
 
@@ -13,8 +12,16 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if(Time.time > nextSpawnTime)
         {
-            Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
+            GameObject cactus = ObjectPool.instance.GetPooledObject();
+            // Havuzda boþta eleman var mý kontrol et
+            if (cactus != null)
+            {
+                cactus.transform.position = transform.position;
+                cactus.transform.rotation = Quaternion.identity;
+                cactus.SetActive(true); // Uyuya prensesi uyandýr
+            }
             nextSpawnTime = Time.time + spawnRate;
         }
+        
     }
 }

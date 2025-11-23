@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
-    public bool isGrounded = false;
+    private bool isGrounded = false;
 
     private Rigidbody2D rb;
 
@@ -28,6 +28,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
+        }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        { 
+            GameManager.instance.GameOver();
+            Debug.Log("Obstacle");
         }
     }
 }
